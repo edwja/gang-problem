@@ -1,0 +1,64 @@
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\documentclass{article}
+\usepackage{amsmath,amsthm,hyperref}
+\pagestyle{empty}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+
+\newtheorem*{question}{Question}
+
+\begin{document}
+
+A {\em job\/} is a list of $m$ versions of uniformly-sized rectangular
+printed pieces, represented as an $m$-tuple of positive integers:
+\[
+  V = (v_1, \ldots , v_m)
+\]
+
+An $n$-up {\em form\/} is an arrangement of $n$ uniformly-sized
+rectangular images on a single printed press sheet that can be cut
+into individual pieces after printing. A form is represented as an
+$m$-tuple of non-negative integers: $ (f_1, \ldots, f_m) $, where each
+$f_i$ is the number of copies of version $v_i$ on the press sheet and
+$\sum{f_i} = n$. Then the set of all possible $n$-up forms for $m$
+versions is given by
+\[
+  F_{m,n} = \{ (f_1,\ldots,f_m) \mid \sum_{i=1}^{m} f_i = n \}
+\]
+Note that the number of such forms is the number of weak
+compositions\footnote{see \url{https://en.wikipedia.org/wiki/Composition_(combinatorics)}.}
+of $n$ in $m$ terms, giving
+\[
+  |F_{m,n}| = \binom{m+n-1}{n-1}
+\]
+
+An $N$-tuple $(x_1,\ldots,x_N)$, where $N = |F_{m,n}|$, is a {\em solution\/} for job $V$ if
+\[
+  \sum_{i=1}^{N} x_i f_j \geq v_j \text{, for all }\, 1 \leq j \leq m
+\]
+Conceptually, $x_i$ is the quantity of the press run of the $i$th form.
+
+Let the cost of a press run of quantity $x > 0$ be defined as $A x +
+B$, where $A$ is the cost per sheet and $B$ is the fixed set up cost
+of a press run. Then the cost function of a solution is
+\[
+  c(x_1,\ldots,x_N) =
+  \begin{cases}
+    Ax_i + B & x > 0 \\
+    0        & x = 0
+  \end{cases}
+\]
+
+\begin{question}
+Given a job $V$ run $n$-up with cost per sheet $A$  and set up cost
+$B$ per press run, what solution $(x_1,\ldots,x_N)$ has the minimum
+cost?
+\end{question}
+
+
+\end{document}
